@@ -33,14 +33,7 @@ def local_entropy(T_sub):
 
 
 def orthogonal_loss(shared: torch.Tensor, specific: torch.Tensor, reduction='mean'):
-    """
-    计算 shared 和 specific 特征的正交约束损失
-    输入:
-        shared: [B, L, D]
-        specific: [B, L, D]
-    输出:
-        scalar loss
-    """
+    
     shared_norm = F.normalize(shared, dim=-1)  # [B, L, D]
     specific_norm = F.normalize(specific, dim=-1)  # [B, L, D]
 
