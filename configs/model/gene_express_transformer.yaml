@@ -1,0 +1,19 @@
+# Use open-source version of Mamba
+_name_: GeneExpTransformer #BiMambaAlignWoEncoder BiMambaAlign
+config:
+  _target_: caduceus.configuration_caduceus.AttnConfig
+  d_model: 256  # 128, 256
+  n_layer: 4
+  center_len: 2000
+  base_size: 4
+  signal_size: 2 # 默认3
+  rna_feat_dim: 9
+  useRNAFeat: True
+  vocab_size: 12
+  
+
+  
+
+  # encoder params
+  
+
