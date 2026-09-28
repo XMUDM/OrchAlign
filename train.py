@@ -391,7 +391,6 @@ class SequenceLightningModule(pl.LightningModule):
         else:
             NotImplementedError()
         self._process_state(batch, batch_idx, training=(prefix == "train"))
-       # x, y, w = self.forward(batch) # pred_expr, y_expr, aux_infor
         x, y, w,seq,sig = self.forward(batch) # pred_expr, y_expr, aux_infor
         
        
@@ -408,6 +407,8 @@ class SequenceLightningModule(pl.LightningModule):
       
         # Metrics
         total_loss = sum(loss_dict.values())
+        total_loss =total_loss+orth_coef*sig
+        total_loss =total_loss+kl_coef*seq
         metrics = self.metrics(x, y, **w) #
         metrics.update(loss_dict)
         metrics['total_loss'] = total_loss
